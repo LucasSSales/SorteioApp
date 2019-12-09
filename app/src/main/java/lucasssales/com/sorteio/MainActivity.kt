@@ -44,15 +44,20 @@ class MainActivity : AppCompatActivity() {
             var i = inicio.toInt()
             var f = fim.toInt()
 
-            if(validarIntervalo(i, f)){
-                var saida = "";
+            if(validarIntervalo(i, f) && qntdd.toInt()>0){
+                var saida = "Números Sorteados:\n\n";
                 //texto.setText("$num")
                 for(n in 1..qntdd.toInt()){
-                    saida += ""+Random().nextInt(f-i+1) + i + ", "
+                    saida += ""+ (Random().nextInt(f-i+1) + i) + ", "
                 }
                 texto.setText(saida)
             }else{
-                texto.setText("Insira um intervalo válido!")
+                var saida = ""
+                if(qntdd.toInt()<=0)
+                    saida += "Quantidade Inválida!\n"
+                if(i > f)
+                    saida += "Insira um intervalo válido!"
+                texto.setText(saida)
             }
 
         }else{
